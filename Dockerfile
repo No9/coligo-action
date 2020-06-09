@@ -13,8 +13,9 @@ ENV IBMCLOUD_VERSION_CHECK=false
 RUN curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
 RUN chmod +x kn
 RUN cp kn /usr/local/bin
-RUN curl -fsSL https://clis.cloud.ibm.com/download/bluemix-cli/1.1.0/linux64 > ibmcloud
-RUN chmod +x ibmcloud
+RUN curl -fsSL https://clis.cloud.ibm.com/download/bluemix-cli/1.1.0/linux64 > ibmcloud.tar.gz
+RUN tar xvzf ibmcloud.tar.gz
+RUN Bluemix_CLI/install
 RUN mv ibmcloud /usr/local/bin
 RUN ibmcloud plugin install container-registry      
 RUN ibmcloud plugin install kubernetes-service
