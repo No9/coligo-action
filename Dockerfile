@@ -14,6 +14,7 @@ RUN curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linu
 RUN chmod +x kn
 RUN cp kn /usr/local/bin
 RUN curl -fsSL https://clis.cloud.ibm.com/download/bluemix-cli/1.1.0/linux64 > ibmcloud
+RUN chmod +x ibmcloud
 RUN mv ibmcloud /usr/local/bin
 RUN ibmcloud plugin install container-registry      
 RUN ibmcloud plugin install kubernetes-service
