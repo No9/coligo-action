@@ -10,6 +10,7 @@ IMAGE_NAME=${REGISTRY_USERNAME}/${REPO_NAME}:${GITHUB_SHA}
 appsody build -t ${IMAGE_NAME} --push
 IBMCLOUD_VERSION_CHECK=false
 IBMCLOUD_API_KEY=$IBMCLOUD_API_KEY
+
 ibmcloud coligo target --name $PROJECT
 ibmcloud coligo application create --name ${REPO_NAME} --image ${IMAGE_NAME}
 time=$(date)
