@@ -7,6 +7,18 @@ An action to deploy containers to IBM Cloud Knative
 
 **Required** The name of the project to deploy. Default `"World"`.
 
+### `ibmapikey`
+
+**Required** Key for IBM API. Default `""`.
+
+### `registryusername`
+
+**Required** Container Registry User Name. Default `""`.
+
+### `registryaccesstoken`
+
+**Required** Container Registry Access Token. Default `""`.
+
 ## Outputs
 
 ### `time`
