@@ -1,9 +1,9 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Coligo Action'
+description: 'Deploy an application to coligo'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  project:  # id of input
+    description: 'The name of the coligo project'
     required: true
     default: 'World'
 outputs:
@@ -13,4 +13,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.project }}

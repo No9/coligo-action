@@ -15,6 +15,6 @@ The time we greeted you.
 
 ## Example usage
 
-uses: actions/coligo-action@v1
+uses: no9/coligo-action@1.0.0
 with:
   project: 'awethum project'
