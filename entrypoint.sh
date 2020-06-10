@@ -10,7 +10,7 @@ IMAGE_NAME=${REGISTRY_USERNAME}/${REPO_NAME}:${GITHUB_SHA}
 appsody build -t ${IMAGE_NAME} --push
 IBMCLOUD_VERSION_CHECK=false
 IBMCLOUD_API_KEY=$IBMCLOUD_API_KEY
-ENV IBMCLOUD_VERSION_CHECK=false
+IBMCLOUD_VERSION_CHECK=false
 curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
 chmod +x kn
 cp kn /usr/local/bin
