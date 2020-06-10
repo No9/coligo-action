@@ -3,22 +3,46 @@ An action to deploy containers to IBM Cloud Knative
 
 ## Inputs
 
-### `project`
+All imputs are environment variables
 
-**Required** The name of the project to deploy. Default `"World"`.
+### `PROJECT`
 
-### `ibmapikey`
+**Required** The name of the coligo project to target.
 
-**Required** Key for IBM API. Default `""`.
+Run the following to find available projects.
+```
+$ ibmcloud coligo project list
+```
+See https://cloud.ibm.com/docs/knative?topic=knative-manage-project
 
-### `registryusername`
+### `IBMCLOUD_API_KEY`
 
-**Required** Container Registry User Name. Default `""`.
+**Required** Key for IBM API.
+To generate run the following command:
+```
+$ ibmcloud iam api-key-create nodejs-coligo-sample
+```
 
-### `registryaccesstoken`
+### `REGISTRY`
 
-**Required** Container Registry Access Token. Default `""`.
+**Required** Container Registry to store the generated container.
+```
+quay.io
+docker.io
+cr.io
+```
 
+### `REGISTRY_USERNAME`
+
+**Required** Container Registry User Name.
+
+
+### `REGISTRY_API_KEY`
+
+**Required** Container Registry Access Token.
+```
+
+```
 ## Outputs
 
 ### `time`
@@ -27,6 +51,23 @@ The time we greeted you.
 
 ## Example usage
 
-uses: no9/coligo-action@1.0.0
-with:
-  project: 'awethum project'
+```
+on: [push]
+
+jobs:
+  coligo_job:
+    runs-on: ubuntu-latest
+    name: build and deploy coligo service
+    steps:
+    - name: build and deploy 
+      id: coligo
+      uses: no9/coligo-action@1.8.0
+      env:
+        PROJECT: 'sample-app'
+        IBMCLOUD_API_KEY: ${{ secrets.IBMCLOUD_API_KEY }}
+        REGISTRY: 'docker.io'
+        REGISTRY_USERNAME: 'number9'
+        REGISTRY_API_KEY: ${{ secrets.DOCKER_API_KEY }}
+    - name: Get the output time
+      run: echo "The time was ${{ steps.coligo.outputs.time }}"
+```

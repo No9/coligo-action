@@ -1,28 +1,11 @@
 # action.yml
 name: 'Coligo Action'
 description: 'Deploy an application to coligo'
-inputs:
-  project:  # id of input
-    description: 'The name of the coligo project'
-    required: true
-    default: 'World'
-  ibmapikey:  
-    description: 'Key for IBM API'
-    required: true
-    default: ''
-  registryusername:  
-    description: 'Container Registry User Name'
-    required: true
-    default: ''
-  registryaccesstoken:  
-    description: 'Container Registry Access Token'
-    required: true
-    default: ''
+
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.project }}
+  
