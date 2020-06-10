@@ -8,8 +8,7 @@ git reset --hard $GITHUB_SHA
 echo $REGISTRY_API_KEY | docker login $REGISTRY --username $REGISTRY_USERNAME --password-stdin
 IMAGE_NAME=${REGISTRY_USERNAME}/${REPO_NAME}:${GITHUB_SHA}
 appsody build -t ${IMAGE_NAME} --push
-IBMCLOUD_VERSION_CHECK=false
-IBMCLOUD_API_KEY=$IBMCLOUD_API_KEY
+
 IBMCLOUD_VERSION_CHECK=false
 curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
 chmod +x kn
@@ -21,6 +20,7 @@ ibmcloud plugin install container-registry
 ibmcloud plugin install kubernetes-service
 ibmcloud plugin install coligo
 ibmcloud plugin show coligo
+ibmcloud login --apikey $IBM_CLOUD_API_KEY -r us-south
 ibmcloud coligo target --name $PROJECT
 ibmcloud coligo application create --name ${REPO_NAME} --image ${IMAGE_NAME}
 time=$(date)
