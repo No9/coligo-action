@@ -9,16 +9,16 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 RUN apt-get update
 RUN apt-get install -y docker-ce
-ENV IBMCLOUD_VERSION_CHECK=false
-RUN curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
-RUN chmod +x kn
-RUN cp kn /usr/local/bin
-RUN curl -fsSL https://clis.cloud.ibm.com/download/bluemix-cli/1.1.0/linux64 > ibmcloud.tar.gz
-RUN tar xvzf ibmcloud.tar.gz
-RUN ./Bluemix_CLI/install
-RUN ibmcloud plugin install container-registry      
-RUN ibmcloud plugin install kubernetes-service
-RUN ibmcloud plugin install coligo
+# ENV IBMCLOUD_VERSION_CHECK=false
+# RUN curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
+# RUN chmod +x kn
+# RUN cp kn /usr/local/bin
+# RUN curl -fsSL https://clis.cloud.ibm.com/download/bluemix-cli/1.1.0/linux64 > ibmcloud.tar.gz
+# RUN tar xvzf ibmcloud.tar.gz
+# RUN ./Bluemix_CLI/install
+# RUN ibmcloud plugin install container-registry      
+# RUN ibmcloud plugin install kubernetes-service
+# RUN ibmcloud plugin install coligo
 
 RUN curl -fsSL https://github.com/appsody/appsody/releases/download/0.6.3/appsody_0.6.3_amd64.deb > appsody.deb
 RUN apt-get install -y ./appsody.deb
