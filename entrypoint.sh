@@ -7,7 +7,9 @@ cd ${REPO_NAME}
 git reset --hard $GITHUB_SHA
 echo $REGISTRY_API_KEY | docker login $REGISTRY --username $REGISTRY_USERNAME --password-stdin
 IMAGE_NAME=${REGISTRY_USERNAME}/${REPO_NAME}:${GITHUB_SHA}
-appsody build -t ${IMAGE_NAME} --push
+ls -al
+pwd 
+appsody build -v -t ${IMAGE_NAME} --push
 
 IBMCLOUD_VERSION_CHECK=false
 curl -L https://storage.googleapis.com/knative-nightly/client/latest/kn-linux-amd64 > kn 
